@@ -1,7 +1,7 @@
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from typing import List
-from services.lemmatizer import LemmatizerService
+from src.services.lemmatizer import LemmatizerService
 
 router = APIRouter()
 

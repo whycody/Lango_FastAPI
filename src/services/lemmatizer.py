@@ -1,7 +1,6 @@
 from typing import List
-from models import LemmaResult
-from nlp_models import models, lemmatize_words_polish
-
+from src.models import LemmaResult
+from src.nlp_models import models, lemmatize_words_polish
 
 class LemmatizerService:
     @staticmethod
