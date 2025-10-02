@@ -1,4 +1,6 @@
-from typing import List
+from typing import List, Dict
+
+from bson import ObjectId
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 class LemmasTranslationsRepository:
@@ -36,3 +38,16 @@ class LemmasTranslationsRepository:
         results = await cursor.to_list(length=None)
 
         return [str(r["_id"]) for r in results]
+
+    async def get_lemmas_translations(
+            self,
+            lemma_ids: List[str],
+            translation_lang: str
+    ) -> Dict[str, Dict]:
+        cursor = self.lemmas_translations.find({
+            "lemmaId": {"$in": [ObjectId(lid) for lid in lemma_ids]},
+            "translationLang": translation_lang
+        })
+
+        results = await cursor.to_list(length=None)
+        return {str(r["lemmaId"]): r for r in results}
