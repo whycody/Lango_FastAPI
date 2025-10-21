@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Query, Depends
 from motor.motor_asyncio import AsyncIOMotorDatabase
 from src.services.suggestions_service import SuggestionsService
-from dependencies import get_db
+from src.dependencies import get_db
 
 router = APIRouter()
 
